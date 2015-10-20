@@ -1,0 +1,50 @@
+df-splayFits.txt
+
+@ http://www.grigoryanlab.org/cccp/output/ff93bb30c149.html
+
+### Original df1-L13A mutant
+
+Structure Summary
+selection = "all" 
+chains	4 (fit 22 residues in each)
+chain A	30.775 Å in Z-direction
+chain B	30.775 Å in Z-direction; anti-parallel to chain A
+chain C	30.775 Å in Z-direction; anti-parallel to chain A
+chain D	30.775 Å in Z-direction; parallel to chain A
+
+
+Best-fit Crick parameters[1]:
+R0 (Å) 	7.590
+R1 (Å) 	2.275
+ω0 (°/res) 	-2.870
+ω1 (°/res) 	102.870
+α (°) 	-14.547
+φ1 for chain A (°) 	-8.253
+φ1 for chain B (°) 	-7.272
+φ1 for chain C (°) 	-9.205
+φ1 for chain D (°) 	-7.038
+Δφ0 for chain B (°) 	84.189
+Δφ0 for chain C (°) 	-94.745
+Δφ0 for chain D (°) 	-178.578
+starting heptad position for chain A 	f
+starting heptad position for chain B 	f
+starting heptad position for chain C 	f
+starting heptad position for chain D 	f
+pitch (Å) 	183.783
+rise per residue (Å) 	1.514
+ΔZoff for chain B (Å) 	-2.303
+ΔZaa' for chain B (Å) 	2.665
+ΔZoff for chain C (Å) 	0.057
+ΔZaa' for chain C (Å) 	5.034
+ΔZoff for chain D (Å) 	2.253
+ΔZaa' for chain D (Å) 	2.259
+absolute Zoff for chain B (Å) 	-1.934
+absolute Zoff for chain C (Å) 	0.473
+absolute Zoff for chain D (Å) 	2.270
+RMSD 	0.716 Å
+processed selection 	ff93bb30c149.pdb
+fit CA trace 	ff93bb30c149.CA.pdb
+fit CA-CA distance 	3.81
+
+Full backbone rebuild:
+Full backbone PDB file in ff93bb30c149.allbb.pdb
