@@ -1,0 +1,56 @@
+1WZD-005_004-0169_0182_A_0122_0151_A_aligned-SYM_31-44.pdb CCCP fit
+http://www.grigoryanlab.org/cccp/output/bd43ff42c4ec.html
+
+Structure Summary
+
+selection = "all"
+chains	4 (fit 14 residues in each)
+chain A	19.756 Å in Z-direction
+chain B	18.287 Å in Z-direction; anti-parallel to chain A
+chain C	19.756 Å in Z-direction; anti-parallel to chain A
+chain D	18.287 Å in Z-direction; parallel to chain A
+
+
+Best-fit Crick parameters[1]:
+
+R0 (Å) 	9.490
+R1 (Å) 	2.304
+ω0 (°/res) 	-1.992
+ω1 (°/res) 	101.826
+α (°) 	-12.685
+φ1 for chain A (°) 	-157.575
+φ1 for chain B (°) 	84.348
+φ1 for chain C (°) 	-157.588
+φ1 for chain D (°) 	84.340
+Input: -157.575 84.348 -157.588 84.340
+Δφ0 for chain B (°) 	78.704
+Δφ0 for chain C (°) 	-131.666
+Δφ0 for chain D (°) 	149.631
+Input: 78.704 -131.666 149.631
+starting heptad position for chain A 	a
+starting heptad position for chain B 	g
+starting heptad position for chain C 	a
+starting heptad position for chain D 	g
+pitch (Å) 	264.908
+rise per residue (Å) 	1.503
+ΔZoff for chain B (Å) 	1.347
+ΔZaa' for chain B (Å) 	-3.919
+ΔZoff for chain C (Å) 	-2.193
+ΔZaa' for chain C (Å) 	2.856
+ΔZoff for chain D (Å) 	1.645
+ΔZaa' for chain D (Å) 	-3.549
+Input: -3.919 2.856 -3.549
+absolute Zoff for chain B (Å) 	-0.647
+absolute Zoff for chain C (Å) 	14.073
+absolute Zoff for chain D (Å) 	15.494
+RMSD 	0.303 Å
+processed selection 	bd43ff42c4ec.pdb
+fit CA trace 	bd43ff42c4ec.CA.pdb
+fit CA-CA distance 	3.83
+Full backbone rebuild:
+
+Full backbone PDB file in bd43ff42c4ec.allbb.pdb
+
+[1] For parameter definitions and more more information see: G. Grigoryan, W. F. DeGrado, "Probing Designability via a Generalized Model of Helical Bundle Geometry", J. Mol. Biol., 405(4): 1079-1100 (2011)
+
+Full turn ~ 11 residues 
