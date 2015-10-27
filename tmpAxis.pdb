@@ -1,0 +1,16 @@
+HETATM    1 X    ILE B  32      -6.164   1.219  -4.947    0.062  -0.098   0.993
+HETATM    2 X    LEU B  33      -6.108   1.118  -3.911
+HETATM    3 X    GLU B  34      -6.032   0.978  -2.501
+HETATM    4 X    ASP B  35      -5.914   0.763  -0.328
+HETATM    5 X    GLU B  36      -5.850   0.645   0.851
+HETATM    6 X    GLU B  37      -5.791   0.537   1.940
+HETATM    7 X    LYS B  38      -5.677   0.325   4.053
+HETATM    8 X    HIS B  39      -5.601   0.185   5.442
+HETATM    9 X    ILE B  40      -5.546   0.080   6.474
+HETATM   10 X    GLU B  41      -5.457  -0.087   8.117
+HETATM   11 X    TRP B  42      -5.354  -0.279  10.004
+HETATM   12 X    LEU B  43      -5.285  -0.411  11.290
+HETATM   13 X    GLU B  44      -5.232  -0.511  12.268
+HETATM   14 X    THR B  45      -5.131  -0.704  14.135    0.062  -0.103   0.993
+HETATM   15 X    ASP B  69      -5.914   2.763  -0.000
+HETATM   16 X    ASP B  96      -5.914  -2.763  -0.000
