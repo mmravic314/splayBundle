@@ -1,0 +1,47 @@
+Structure Summary
+
+selection = "all"
+chains	4 (fit 11 residues in each)
+chain A	14.953 Å in Z-direction
+chain B	13.747 Å in Z-direction; anti-parallel to chain A
+chain D	14.952 Å in Z-direction; anti-parallel to chain A
+chain C	13.746 Å in Z-direction; parallel to chain A
+
+
+Best-fit Crick parameters[1]:
+
+R0 (Å) 	10.086
+R1 (Å) 	2.367
+ω0 (°/res) 	-2.056
+ω1 (°/res) 	100.279
+α (°) 	-14.224
+φ1 for chain A (°) 	-162.929
+φ1 for chain B (°) 	-4.418
+φ1 for chain D (°) 	-163.085
+φ1 for chain C (°) 	-4.317
+Δφ0 for chain B (°) 	65.101
+Δφ0 for chain D (°) 	-154.061
+Δφ0 for chain C (°) 	140.831
+starting heptad position for chain A 	a
+starting heptad position for chain B 	f
+starting heptad position for chain D 	a
+starting heptad position for chain C 	f
+pitch (Å) 	249.991
+rise per residue (Å) 	1.473
+ΔZoff for chain B (Å) 	1.209
+ΔZaa' for chain B (Å) 	1.144
+ΔZoff for chain D (Å) 	0.826
+ΔZaa' for chain D (Å) 	-4.468
+ΔZoff for chain C (Å) 	-0.396
+ΔZaa' for chain C (Å) 	-0.308
+absolute Zoff for chain B (Å) 	0.311
+absolute Zoff for chain D (Å) 	6.232
+absolute Zoff for chain C (Å) 	6.988
+RMSD 	0.852 Å
+processed selection 	1d35f956b6a9.pdb
+fit CA trace 	1d35f956b6a9.CA.pdb
+fit CA-CA distance 	3.87
+Full backbone rebuild:
+
+Full backbone PDB file in 1d35f956b6a9.allbb.pdb
+http://www.grigoryanlab.org/cccp/output/1d35f956b6a9.html

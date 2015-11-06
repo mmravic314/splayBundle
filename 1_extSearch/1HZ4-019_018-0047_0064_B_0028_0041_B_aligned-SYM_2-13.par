@@ -1,0 +1,43 @@
+Structure Summary
+
+selection = "all"
+chains	4 (fit 12 residues in each)
+chain A	15.802 Å in Z-direction
+chain B	13.846 Å in Z-direction; anti-parallel to chain A
+chain D	15.802 Å in Z-direction; anti-parallel to chain A
+chain C	13.844 Å in Z-direction; parallel to chain A
+
+
+Best-fit Crick parameters[1]:
+
+R0 (Å) 	9.034
+R1 (Å) 	2.265
+ω0 (°/res) 	-4.428
+ω1 (°/res) 	103.581
+α (°) 	-27.480
+φ1 for chain A (°) 	-30.425
+φ1 for chain B (°) 	177.507
+φ1 for chain D (°) 	-30.344
+φ1 for chain C (°) 	177.201
+Δφ0 for chain B (°) 	68.994
+Δφ0 for chain D (°) 	-143.345
+Δφ0 for chain C (°) 	147.736
+starting heptad position for chain A 	b
+starting heptad position for chain B 	d
+starting heptad position for chain D 	b
+starting heptad position for chain C 	d
+pitch (Å) 	109.134
+rise per residue (Å) 	1.513
+ΔZoff for chain B (Å) 	-0.107
+ΔZaa' for chain B (Å) 	-0.111
+ΔZoff for chain D (Å) 	1.603
+ΔZaa' for chain D (Å) 	-3.097
+ΔZoff for chain C (Å) 	1.658
+ΔZaa' for chain C (Å) 	-3.037
+absolute Zoff for chain B (Å) 	-1.379
+absolute Zoff for chain D (Å) 	-12.354
+absolute Zoff for chain C (Å) 	-9.649
+RMSD 	0.552 Å
+processed selection 	2862f68e2620.pdb
+fit CA trace 	2862f68e2620.CA.pdb
+fit CA-CA distance 	3.80
