@@ -10,15 +10,20 @@ realLine = 'ATOM    341  OE2 GLU A  44      -0.265 -33.310  -7.923  1.00 29.94  
 
 elements = [ 'C', 'N', 'O', 'H' ]
 
+# input length is second argment
+#
+## python ~/splayBundle/designInputs/1WZDbb/reWriteCCCPdbs.py  designInputs/3BVX-2L/ 40
+
 
 resID 	= 1
 prvRes	= 1
 first	= True
+length	= int(sys.argv[2])
 for f in os.listdir( sys.argv[1] ):
 	if f[-4:] != '.pdb': continue
 	
 	#Hack to target a single file
-	if f[0] != '2': continue
+	#if f[0] != '2': continue
 
 
 	path 	= os.path.join( sys.argv[1], f )
@@ -42,12 +47,12 @@ for f in os.listdir( sys.argv[1] ):
 					resID += 1
 
 				# Figure out Chain (slow)
-				if 		resID <=100: 	
-					chID = 'A'
-				elif 	resID <=200: 	chID = 'C'
-				else:					
-					print "Oops, extra residues found >2s00. exiting...\n"
-					sys.exit()
+				#if 		resID <=100: 	
+				#	chID = 'A'
+				#elif 	resID <=200: 	chID = 'C'
+				#else:					
+				#	print "Oops, extra residues found >2s00. exiting...\n"
+				#	sys.exit()
 
 				lineList = [
 				i[0:6],
@@ -55,7 +60,7 @@ for f in os.listdir( sys.argv[1] ):
 				i[12:16],
 				' ',
 				i[17:20],
-				chID,
+				i[21:22],
 				str(resID),
 				' ',
 				i[30:38],
@@ -73,8 +78,8 @@ for f in os.listdir( sys.argv[1] ):
 				reStr  += outStr
 
 				# Add Ter lines (should make this function of input chain length)
-				if resID in [ 50, 100, 150, 200 ] and i[12:16].strip() == 'O' :
-					terStr = 'TER{:>8}{:>9}{:>2}{:>4}\n'.format( i[6:11], i[17:20], chID, str(resID) ) 
+				if resID in [ length, 2*length, 3*length, 4*length ] and i[12:16].strip() == 'O' :
+					terStr = 'TER{:>8}{:>9}{:>2}{:>4}\n'.format( i[6:11], i[17:20], i[21:22], str(resID) ) 
 					# TER     300      ALA A  50 
 					reStr += terStr
 				
@@ -84,8 +89,8 @@ for f in os.listdir( sys.argv[1] ):
 		print reStr
 		outFile.close()
 		print outPath
-		break
-	break 
+#		break
+#	break 
 
 
 
