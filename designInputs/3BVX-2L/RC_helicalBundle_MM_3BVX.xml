@@ -2,8 +2,8 @@
 
 
  <SCOREFXNS>
- 	<score12_symm weights=talaris2013_downAla.wts symmetric=1 />
- 	<score12_asym weights=talaris2013_downAla.wts />
+ 	#<score12_symm weights=talaris2013_downAla.wts symmetric=1 />
+ 	#<score12_asym weights=talaris2013_downAla.wts />
 
  	<hard weights=talaris2013_downAla.wts />
  	 	<Reweight scoretype=coordinate_constraint weight=0.5 />
