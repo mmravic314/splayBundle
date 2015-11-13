@@ -1,0 +1,4 @@
+REMARK 0.0439231 /home/xray/termanal/support.default/database/bc-30-sc-20141022/cp/1cpb_B.pds [(93,95)] 0.0439231
+ATOM     94  CA  HIS B 186       4.228  27.962  -9.298  1.00  0.00           C
+ATOM     95  CA  LEU B 187       2.607  24.671 -10.014  1.00  0.00           C
+ATOM     96  CA  SER B 188       0.260  26.309 -12.850  1.00  0.00           C

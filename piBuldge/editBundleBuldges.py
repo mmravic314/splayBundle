@@ -1,8 +1,9 @@
 ## Unstable code ste for editting helical nudles and pi bulges
 # Marco Mravic Nov 2015
 
-import sys
+import sys, subprocess as sp, os
 from prody import *
+
 
 
 
@@ -49,9 +50,61 @@ def cleanchains( string ):
 
 	return cleanStr+'END'
 
+# Input directory of pdbs of TERMS, make subdirs within of top 100 hits (or all <1.25 bbRMSD) and match file data on each
+### NOTE: requires a text file list with user's local path to each "target" .pds file in database: path2termanal/support.default/database/list.txt
+
+def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
+
+	if not os.path.exists( path2termanal ):
+		print 'PATH TO TERMANAL (and consequently master and createPDS binaries) is invalid'
+		sys.exit()
+
+	# Make input path list txt file of pdbs
+	listPath 	= os.path.join( path2Frags, 'fragList.txt' )
+	listF 		= open( listPath, 'w' )
+	for f in os.listdir( path2Frags ):
+		if f[-3:] == 'pdb':
+			listF.write( os.path.join( path2Frags, f ) + '\n' )
+	listF.close()
+
+	# Create PDS files for master fragments search
+	pdsCMD = [ os.path.join( path2termanal, 'createPDS'),  '--type', 'query', '--pdbList',  listPath ] 
+	sp.call( pdsCMD )
+
+	# perform master search for each pds file in the same directory just created
+	dbListFilePath  = os.path.join( path2termanal, 'support.default/database/list.txt' )	# This should have user's local path to each databaae pds in it
+	masterPath		= os.path.join( path2termanal, 'master')
+	for f in os.listdir( path2Frags ):
+		if f[-3:] == 'pds':
+			mDir  = os.path.join( path2Frags, os.path.splitext( f )[0] + '/' )		# directory to send match pdbs/data
+			mFile = os.path.join( mDir, os.path.splitext( f )[0] + '.m' )		# match fiel for RMSDs, seqs, alignments
+
+			sp.call( ['mkdir', mDir] )
+
+			mstCmd = [ masterPath, 
+				'--query', os.path.join( path2Frags, f ),
+				'--targetList', dbListFilePath,
+				'--rmsdCut', rmsdCut, '--topN', topN, '--bbRMSD',
+				'--matchOut', mFile, '--structOut', mDir  ]
+
+			print 
+			print mstCmd
+			print 
+			print
+			sp.call( mstCmd )
 
 
-cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
+
+	return
+
+
+######## Cleaning up PDB's fro coiled-coil fitting
+#cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
 #print open( sys.argv[1], 'rU' ).read() 
-outFile		=	open( sys.argv[1][:-4] + 'c.pdb', 'w' )
-outFile.write( cleanStr )
+#outFile		=	open( sys.argv[1][:-4] + 'c.pdb', 'w' )
+#outFile.write( cleanStr )
+
+
+## Sent out master searches with a helical bundle 
+termsReSearch( sys.argv[1], sys.argv[2] )
+
