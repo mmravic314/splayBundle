@@ -103,8 +103,45 @@ def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
 #print open( sys.argv[1], 'rU' ).read() 
 #outFile		=	open( sys.argv[1][:-4] + 'c.pdb', 'w' )
 #outFile.write( cleanStr )
+#cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
+
+# CA lines only
+
+cleanStr	= ''
+with open(sys.argv[1]) as file:
+	resi = 1
+	for l in file:
+		 if l[:4] != 'ATOM': continue
+		 if l[12:16].strip() == 'CA' and l[16:17] in ['A', ' ']: 
+		 	
+
+				lineList = [
+					l[0:6],
+					l[6:11],
+					l[12:16],
+					' ',
+					l[17:20],
+					l[21:22],
+					str(resi),
+					' ',
+					l[30:38],
+					l[38:46],
+					l[46:54],
+					l[54:60],
+					l[60:66],
+					l[76:78],
+					l[78:80]
+					]
+
+				outStr = '{:<6}{:>5} {:<4}{:<1}{:<3} {:<1}{:>4}{:<1}   {:>8}{:>8}{:>8}{:>6}{:>6}          {:>2}{:>2}\n'.format( *lineList )
+				cleanStr+= outStr
+				resi += 1
+		 	#cleanStr += i 
+		 		print l.rstrip()
+		 		#print outStr
+
 
 
 ## Sent out master searches with a helical bundle 
-termsReSearch( sys.argv[1], sys.argv[2] )
+#termsReSearch( sys.argv[1], sys.argv[2] )
 
