@@ -1,0 +1,44 @@
+H1N_CCminiccCCFit.txt
+
+Structure Summary
+selection = "all" 
+chains	4 (fit 9 residues in each)
+chain A	12.408 Å in Z-direction
+chain B	11.797 Å in Z-direction; anti-parallel to chain A
+chain C	10.873 Å in Z-direction; anti-parallel to chain A
+chain D	10.901 Å in Z-direction; parallel to chain A
+
+
+Best-fit Crick parameters[1]:
+R0 (Å) 	6.898
+R1 (Å) 	2.252
+ω0 (°/res) 	-2.699
+ω1 (°/res) 	102.956
+α (°) 	-12.595
+φ1 for chain A (°) 	-49.585
+φ1 for chain B (°) 	26.198
+φ1 for chain C (°) 	136.605
+φ1 for chain D (°) 	145.820
+Δφ0 for chain B (°) 	71.305
+Δφ0 for chain C (°) 	-99.520
+Δφ0 for chain D (°) 	170.930
+starting heptad position for chain A 	b
+starting heptad position for chain B 	c
+starting heptad position for chain C 	d
+starting heptad position for chain D 	d
+pitch (Å) 	193.985
+rise per residue (Å) 	1.490
+ΔZoff for chain B (Å) 	-2.172
+ΔZaa' for chain B (Å) 	2.747
+ΔZoff for chain C (Å) 	0.641
+ΔZaa' for chain C (Å) 	0.428
+ΔZoff for chain D (Å) 	-1.525
+ΔZaa' for chain D (Å) 	-1.591
+absolute Zoff for chain B (Å) 	-3.309
+absolute Zoff for chain C (Å) 	3.834
+absolute Zoff for chain D (Å) 	1.236
+RMSD 	0.947 Å
+processed selection 	c2299d07bf85.pdb
+fit CA trace 	c2299d07bf85.CA.pdb
+fit CA-CA distance 	3.77
+

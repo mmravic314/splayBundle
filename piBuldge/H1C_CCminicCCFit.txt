@@ -1,0 +1,48 @@
+H1C_CCminicCCFit.txt
+
+Structure Summary
+selection = "all" 
+chains	4 (fit 9 residues in each)
+chain A	11.788 Å in Z-direction
+chain B	11.514 Å in Z-direction; anti-parallel to chain A
+chain C	11.030 Å in Z-direction; anti-parallel to chain A   *********** contains buldge
+chain D	11.197 Å in Z-direction; parallel to chain A
+
+Best-fit Crick parameters[1]:
+R0 (Å) 	7.009
+R1 (Å) 	2.285
+ω0 (°/res) 	-2.524
+ω1 (°/res) 	102.307
+α (°) 	-11.927
+φ1 for chain A (°) 	33.056
+φ1 for chain B (°) 	55.201
+φ1 for chain C (°) 	153.020
+φ1 for chain D (°) 	84.547
+33.056 55.201 153.020 84.547
+
+Δφ0 for chain B (°) 	67.076
+Δφ0 for chain C (°) 	-90.389
+Δφ0 for chain D (°) 	176.264
+67.076 -90.389 176.264
+
+starting heptad position for chain A 	c
+starting heptad position for chain B 	c
+starting heptad position for chain C 	d
+starting heptad position for chain D 	g
+pitch (Å) 	208.487
+rise per residue (Å) 	1.494
+ΔZoff for chain B (Å) 	2.515
+ΔZaa' for chain B (Å) 	2.291
+ΔZoff for chain C (Å) 	-0.180
+ΔZaa' for chain C (Å) 	4.769
+ΔZoff for chain D (Å) 	1.826
+ΔZaa' for chain D (Å) 	1.817
+2.291 4.769 1.817
+
+absolute Zoff for chain B (Å) 	-5.762
+absolute Zoff for chain C (Å) 	-4.055
+absolute Zoff for chain D (Å) 	-2.581
+RMSD 	0.620 Å
+processed selection 	58920114be02.pdb
+fit CA trace 	58920114be02.CA.pdb
+fit CA-CA distance 	3.80
