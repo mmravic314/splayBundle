@@ -5,7 +5,7 @@
  	#<score12_symm weights=talaris2013_downAla.wts symmetric=1 />
  	#<score12_asym weights=talaris2013_downAla.wts />
 
- 	<hard weights=talaris2013_downAla.wts />
+ 	<hard weights=talaris2013_downAla.wts >
  	 	<Reweight scoretype=coordinate_constraint weight=0.5 />
  	</hard>
 
@@ -23,6 +23,7 @@
  	<hard_bb weights=talaris2013_downAla.wts >
  		<Reweight scoretype=coordinate_constraint weight=2. />
  		<Reweight scoretype=cart_bonded weight = 0.5 />
+ 		<Reweight scoretype=pro_close weight=0.0/>
 
  	</hard_bb>
  </SCOREFXNS>
@@ -80,15 +81,13 @@
 	<PackRotamersMover name=hardpack_core scorefxn=hard task_operations=all_layers,select_core,current,arochi,ex1_ex2/>
 	<PackRotamersMover name=softpack_boundary scorefxn=soft task_operations=all_layers,select_boundary,current,arochi/>
 	<PackRotamersMover name=hardpack_boundary scorefxn=hard task_operations=all_layers,select_boundary,current,arochi,ex1_ex2/>
-	<SetupForSymmetry name=setup_symm definition="/home/mmravic/splayBundle/designInputs/1WZDbb/2L.symm"/>
- 	<PackRotamersMover name=symm_pack_sasa_core_soft scorefxn=soft_symm task_operations=current,arochi,ex1_ex2,all_layers,select_core/>
- 	<PackRotamersMover name=symm_pack_sasa_core_hard scorefxn=hard_symm task_operations=current,arochi,ex1,all_layers,select_core/>
-	<SymMinMover name=hardmin_cart scorefxn=hard_symm type=lbfgs_armijo_nonmonotone tolerance=0.0001 chi=1 bb=1 bondangle=1 bondlength=1 jump=all cartesian=1/>
+
 	<AddConstraintsToCurrentConformationMover name=add_cst use_distance_cst=0 max_distance=12. coord_dev=2.5 min_seq_sep=8 />
 	<ClearConstraintsMover name=clearconstraints/>
-	<PDBReload name=reload />
+
 	<MinMover name=hardmin_bb scorefxn=hard_bb type=lbfgs_armijo_nonmonotone tolerance=0.0001 chi=1 bb=1 bondangle=1 bondlength=1 jump=all cartesian=1/>
-	<MinMover name=hardmin_sconly scorefxn=hard_symm chi=1 bb=0 bondangle=0 bondlength=0/>
+
+	<MinMover name=hardmin_sconly scorefxn=hard chi=1 bb=0 bondangle=0 bondlength=0/>
  </MOVERS>
 
  <APPLY_TO_POSE>

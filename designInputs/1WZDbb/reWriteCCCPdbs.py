@@ -95,8 +95,9 @@ for f in os.listdir( sys.argv[1] ):
 
 				#break
 
-				# Add Ter lines (should make this function of input chain length)
-				if resID in [ length, 2*length, 3*length, 4*length ] and i[12:16].strip() == 'O' :
+				# Add Ter lines (should make this function of input chain length) 
+				# HARDCODED END OF residues as if all ALAs
+				if resID in [ length, 2*length, 3*length, 4*length ] and i[12:16].strip() == 'HB3' :
 					terStr = 'TER{:>8}{:>9}{:>2}{:>4}\n'.format( i[6:11], i[17:20], chID, str(resID) ) 
 					# TER     300      ALA A  50 
 					reStr += terStr

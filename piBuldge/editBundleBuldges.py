@@ -11,7 +11,7 @@ from prody import *
 def cleanchains( string ):
 
 	cleanStr 	= ''
-	chains 		= [ 'B', 'A', 'D', 'C' ]
+	chains 		= [ 'A', 'B', 'D', 'C' ]
 	chInd		= 0
 
 	for l in string:
@@ -24,8 +24,8 @@ def cleanchains( string ):
 			chInd	+= 1  
 			continue
 
-		if l[:4] != 'ATOM' or l[16:17] not in ['A', ' ']:
-			continue
+		#if l[:4] != 'ATOM' or l[16:17] not in ['A', ' ']:
+		#	continue
 
 		lineList = [
 				l[0:6],
@@ -49,6 +49,61 @@ def cleanchains( string ):
 		cleanStr+= outStr
 
 	return cleanStr+'END'
+
+## Similar prep of chains, except with Rosetta numbering. Need to add Chains and elements
+def rosCCprep( lines, chainLen ):
+	elements 	= [ 'C', 'N', 'O', 'H', 'ZN' ]
+	cleanStr 	= ''
+	chains 		= [ 'A', 'A', 'B', 'B' ]
+	chInd		= 0
+
+	resi 	= 1
+	prvRes	= 1
+
+	for l in lines:
+		#print l.rstrip()
+		# IGNORE non-'ATOM' lines and second conformations 
+		if l[:3] 	== 'TER':
+
+			outStr 	=  'TER{:>8}{:>9}{:>2}{:>4}\n'.format( l[6:11], l[17:20], chains[chInd], l[22:26] )
+			cleanStr+= outStr
+			chInd	+= 1  
+			continue
+
+		if l[:4] != 'ATOM':
+			continue
+
+		resRef 	=  int( l[22:26].strip() )
+		if resRef != prvRes: 
+			resi += 1 
+
+
+		lineList = [
+				l[0:6],
+				l[6:11],
+				l[12:16],
+				' ',
+				l[17:20],
+				chains[chInd],
+				str(resi),
+				' ',
+				l[30:38],
+				l[38:46],
+				l[46:54],
+				l[54:60],
+				l[60:66],
+				[x for x in l[12:16] if x in elements ][0], 
+				'    '
+				]
+		prvRes = resRef
+
+		outStr = '{:<6}{:>5} {:<4}{:<1}{:<3} {:<1}{:>4}{:<1}   {:>8}{:>8}{:>8}{:>6}{:>6}          {:>2}{:>2}\n'.format( *lineList )
+		#print outStr
+		cleanStr+= outStr
+
+	return cleanStr+'END'
+
+
 
 # Input directory of pdbs of TERMS, make subdirs within of top 100 hits (or all <1.25 bbRMSD) and match file data on each
 ### NOTE: requires a text file list with user's local path to each "target" .pds file in database: path2termanal/support.default/database/list.txt
@@ -105,8 +160,34 @@ def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
 #outFile.write( cleanStr )
 #cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
 
-# CA lines only
 
+## Sent out master searches with a helical bundle 
+#termsReSearch( sys.argv[1], sys.argv[2] )
+
+### Clean up all-ala coiled-coil pdb files (Hydrogen's added in Chimera) files for Rosettas
+lineList 	= open( sys.argv[1], 'rU' ).readlines()
+outStr 		= rosCCprep( lineList, 34 )
+outFile 	= open( sys.argv[1][:-4] + 'R.pdb', 'w' )
+outFile.write( outStr )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# CA lines only (OLD)
+sys.exit()
 cleanStr	= ''
 with open(sys.argv[1]) as file:
 	resi = 1
@@ -140,8 +221,4 @@ with open(sys.argv[1]) as file:
 		 		print l.rstrip()
 		 		#print outStr
 
-
-
-## Sent out master searches with a helical bundle 
-#termsReSearch( sys.argv[1], sys.argv[2] )
 
