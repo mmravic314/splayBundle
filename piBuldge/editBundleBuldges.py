@@ -54,7 +54,7 @@ def cleanchains( string ):
 def rosCCprep( lines, chainLen ):
 	elements 	= [ 'C', 'N', 'O', 'H', 'ZN' ]
 	cleanStr 	= ''
-	chains 		= [ 'A', 'A', 'B', 'B' ]
+	chains 		= [ 'A', 'B', 'C', 'D' ]
 	chInd		= 0
 
 	resi 	= 1
@@ -153,6 +153,8 @@ def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
 	return
 
 
+# Gen 
+
 ######## Cleaning up PDB's fro coiled-coil fitting
 #cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
 #print open( sys.argv[1], 'rU' ).read() 
@@ -171,6 +173,7 @@ outFile 	= open( sys.argv[1][:-4] + 'R.pdb', 'w' )
 outFile.write( outStr )
 
 
+# Heavy section aligning pi bulge fragments (H3 initially) to tall part of H1 at turn s
 
 
 

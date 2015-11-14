@@ -47,3 +47,8 @@ RMSD 	0.729 Å
 processed selection 	468063db2287.pdb
 fit CA trace 	468063db2287.CA.pdb
 fit CA-CA distance 	3.80
+
+
+Cut to 30 residues
+/30bs3qhb_ccR//A/ALA`20/CA 	Is H1 proline
+/30bs3qhb_ccR//D/ALA`117/CA Is H3 proline
