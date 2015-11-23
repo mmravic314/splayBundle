@@ -7,6 +7,9 @@ from prody import *
 
 
 
+########### Cleaning up PDB's for coiled-coil fitting  #####################
+
+
 ## cleaning up a pdb file to have chains ABCD based on breaks in the sequence (Ter lines)
 def cleanchains( string ):
 
@@ -49,6 +52,76 @@ def cleanchains( string ):
 		cleanStr+= outStr
 
 	return cleanStr+'END'
+
+#cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
+#print open( sys.argv[1], 'rU' ).read() 
+#outFile		=	open( sys.argv[1][:-4] + 'c.pdb', 'w' )
+#outFile.write( cleanStr )
+#cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
+################### End CC-fitting prep  ###################################
+
+
+############ master searches with a helical bundle template ############
+## only works with Linux binary since can't compile on MACOSX yet
+
+# Input directory of pdbs of TERMS, make subdirs within of top 100 hits (or all <1.25 bbRMSD) and match file data on each
+### NOTE: requires a text file list with user's local path to each "target" .pds file in database: path2termanal/support.default/database/list.txt
+
+def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
+
+	if not os.path.exists( path2termanal ):
+		print 'PATH TO TERMANAL (and consequently master and createPDS binaries) is invalid'
+		sys.exit()
+
+	# Make input path list txt file of pdbs
+	listPath 	= os.path.join( path2Frags, 'fragList.txt' )
+	listF 		= open( listPath, 'w' )
+	for f in os.listdir( path2Frags ):
+		if f[-3:] == 'pdb':
+			listF.write( os.path.join( path2Frags, f ) + '\n' )
+	listF.close()
+
+	# Create PDS files for master fragments search
+	pdsCMD = [ os.path.join( path2termanal, 'createPDS'),  '--type', 'query', '--pdbList',  listPath ] 
+	sp.call( pdsCMD )
+
+	# perform master search for each pds file in the same directory just created
+	dbListFilePath  = os.path.join( path2termanal, 'support.default/database/list.txt' )	# This should have user's local path to each databaae pds in it
+	masterPath		= os.path.join( path2termanal, 'master')
+	for f in os.listdir( path2Frags ):
+		if f[-3:] == 'pds':
+			mDir  = os.path.join( path2Frags, os.path.splitext( f )[0] + '/' )		# directory to send match pdbs/data
+			mFile = os.path.join( mDir, os.path.splitext( f )[0] + '.m' )		# match fiel for RMSDs, seqs, alignments
+
+			sp.call( ['mkdir', mDir] )
+
+			mstCmd = [ masterPath, 
+				'--query', os.path.join( path2Frags, f ),
+				'--targetList', dbListFilePath,
+				'--rmsdCut', rmsdCut, '--topN', topN, '--bbRMSD',
+				'--matchOut', mFile, '--structOut', mDir  ]
+
+			print 
+			print mstCmd
+			print 
+			print
+			sp.call( mstCmd )
+
+
+
+	return
+
+
+#termsReSearch( sys.argv[1], sys.argv[2] )
+
+################ End MASTER seearch Section ############################
+
+
+
+
+############# Clean up all-ala coiled-coil pdb files #################
+##(Hydrogen's added in Chimera) files for Rosettas
+
 
 ## Similar prep of chains, except with Rosetta numbering. Need to add Chains and elements
 def rosCCprep( lines ):
@@ -109,84 +182,74 @@ def rosCCprep( lines ):
 
 	return cleanStr+'END'
 
-
-
-# Input directory of pdbs of TERMS, make subdirs within of top 100 hits (or all <1.25 bbRMSD) and match file data on each
-### NOTE: requires a text file list with user's local path to each "target" .pds file in database: path2termanal/support.default/database/list.txt
-
-def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
-
-	if not os.path.exists( path2termanal ):
-		print 'PATH TO TERMANAL (and consequently master and createPDS binaries) is invalid'
-		sys.exit()
-
-	# Make input path list txt file of pdbs
-	listPath 	= os.path.join( path2Frags, 'fragList.txt' )
-	listF 		= open( listPath, 'w' )
-	for f in os.listdir( path2Frags ):
-		if f[-3:] == 'pdb':
-			listF.write( os.path.join( path2Frags, f ) + '\n' )
-	listF.close()
-
-	# Create PDS files for master fragments search
-	pdsCMD = [ os.path.join( path2termanal, 'createPDS'),  '--type', 'query', '--pdbList',  listPath ] 
-	sp.call( pdsCMD )
-
-	# perform master search for each pds file in the same directory just created
-	dbListFilePath  = os.path.join( path2termanal, 'support.default/database/list.txt' )	# This should have user's local path to each databaae pds in it
-	masterPath		= os.path.join( path2termanal, 'master')
-	for f in os.listdir( path2Frags ):
-		if f[-3:] == 'pds':
-			mDir  = os.path.join( path2Frags, os.path.splitext( f )[0] + '/' )		# directory to send match pdbs/data
-			mFile = os.path.join( mDir, os.path.splitext( f )[0] + '.m' )		# match fiel for RMSDs, seqs, alignments
-
-			sp.call( ['mkdir', mDir] )
-
-			mstCmd = [ masterPath, 
-				'--query', os.path.join( path2Frags, f ),
-				'--targetList', dbListFilePath,
-				'--rmsdCut', rmsdCut, '--topN', topN, '--bbRMSD',
-				'--matchOut', mFile, '--structOut', mDir  ]
-
-			print 
-			print mstCmd
-			print 
-			print
-			sp.call( mstCmd )
-
-
-
-	return
-
-
-# Gen 
-
-######## Cleaning up PDB's fro coiled-coil fitting
-#cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
-#print open( sys.argv[1], 'rU' ).read() 
-#outFile		=	open( sys.argv[1][:-4] + 'c.pdb', 'w' )
-#outFile.write( cleanStr )
-#cleanStr	= cleanchains(  open( sys.argv[1], 'rU' ).readlines()  )
-
-
-## Sent out master searches with a helical bundle 
-#termsReSearch( sys.argv[1], sys.argv[2] )
-
-### Clean up all-ala coiled-coil pdb files (Hydrogen's added in Chimera) files for Rosettas
 #lineList 	= open( sys.argv[1], 'rU' ).readlines()
 #outStr 		= rosCCprep( lineList)
 #if sys.argv[1][-5] == 'R':
 #	sys.exit()
 #outFile 	= open( sys.argv[1][:-4] + 'R.pdb', 'w' )
 #outFile.write( outStr )
-
-
-#sys.exit()
-
+############### end CC cleanup  ##############################
 
 
 
 
+################## filter fragments ##################
+##that either have clashes ( Ca-Ca distance < 3.5) 
+#or diverge from helix axis ( cross-bundle termini > 14.5 A)
+
+def filterTemplates( directory ):
+	listStr = ''
+
+	for f in os.listdir( directory ):
+		if 'ext' not in f: continue
+		path 	= os.path.join( os.path.abspath( directory ), f )
+
+
+		# check if termini are too close or too far from chain across the bundle
+		# D to B, where D is the slanted helix
+		D 		= parsePDB( path , subset = 'ca', chain = 'D')
+		Da 		= D[0].getCoords()
+		B 		= parsePDB( path , subset = 'ca', chain = 'B')
+		Ba 		= B[0].getCoords()
+		distBD 	= round( sum((Da - Ba)**2)**0.5, 1)
+		# A to C, where A is the slanted helix
+		A 		= parsePDB( path , subset = 'ca', chain = 'A')
+		Aa 		= A[0].getCoords()
+		C 		= parsePDB( path , subset = 'ca', chain = 'C')
+		Ca 		= C[0].getCoords()
+		distCA 	= round( sum((Aa - Ca)**2)**0.5, 1)
+		
+		# Check for clashes A to B and D to C 
+		if np.min( buildDistMatrix(D, C) ) < 4 or np.min( buildDistMatrix(A, B) ) < 3.5 :
+			#print "Skipping, clash found", f
+			continue
+
+
+		if distCA < 14.3 and distBD < 14.3:
+			print distBD, distCA, f 
+			print np.min( buildDistMatrix(D, C) ) 
+			listStr += path + '\n'
+
+
+
+	return listStr
+
+# EXAMPLE Command line: python editBundleBuldges.py helicalPhase/00000_phaseScaffoldRx/
+#print filterTemplates( sys.argv[1] )  ## After printing, save to txt file (designScaffoldPaths.txt)
+
+############### End filtering section  ##############
+
+
+
+
+############### Renumber pi-bulge scaffolds
+
+
+
+
+
+sys.exit()
+############ Below is unorganized to the above exit line prevents reaching it  #############
 
 
 
@@ -358,6 +421,8 @@ def NTermHelixExtReplace( targetPDB, insertPos, helixStart, length, chainID = 'D
 	return targetPDB
 
 
+
+#### extend helices once fragments are added
 
 try: oPathz
 except NameError: 
