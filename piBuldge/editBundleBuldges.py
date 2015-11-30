@@ -8,8 +8,6 @@ from prody import *
 
 
 ########### Cleaning up PDB's for coiled-coil fitting  #####################
-
-
 ## cleaning up a pdb file to have chains ABCD based on breaks in the sequence (Ter lines)
 def cleanchains( string ):
 
@@ -62,8 +60,7 @@ def cleanchains( string ):
 
 
 ############ master searches with a helical bundle template ############
-## only works with Linux binary since can't compile on MACOSX yet
-
+## only works with Linux binary since can't compile master/msl on MACOSX yet
 # Input directory of pdbs of TERMS, make subdirs within of top 100 hits (or all <1.25 bbRMSD) and match file data on each
 ### NOTE: requires a text file list with user's local path to each "target" .pds file in database: path2termanal/support.default/database/list.txt
 
@@ -111,9 +108,7 @@ def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
 
 	return
 
-
 #termsReSearch( sys.argv[1], sys.argv[2] )
-
 ################ End MASTER seearch Section ############################
 
 
@@ -121,8 +116,6 @@ def termsReSearch( path2termanal, path2Frags, topN = "100", rmsdCut = "1.25" ):
 
 ############# Clean up all-ala coiled-coil pdb files #################
 ##(Hydrogen's added in Chimera) files for Rosettas
-
-
 ## Similar prep of chains, except with Rosetta numbering. Need to add Chains and elements
 def rosCCprep( lines ):
 	elements 	= [ 'C', 'N', 'O', 'H', 'ZN' ]
@@ -242,7 +235,18 @@ def filterTemplates( directory ):
 
 
 
-############### Renumber pi-bulge scaffolds
+############### Renumber pi-bulge scaffolds  ################
+# Re-organize/Renumber pi-bulge scaffolds w/ metal sites for Rosetta
+
+def bulgeScaffoldCleanup( path2pdb ):
+
+	# Collect all lines having the same chain, then sort by res num, then renumber
+	# Also re-index atoms adn place 'TER' lines. Metals at the end. 
+
+	return
+
+bulgeScaffoldCleanup( sys.argv[1] )
+################## End renumbering section ###################
 
 
 
