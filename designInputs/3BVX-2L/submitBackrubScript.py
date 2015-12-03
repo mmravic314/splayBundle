@@ -1,3 +1,16 @@
+#!/usr/bin/env python2
+
+#$ -S /usr/bin/python
+#$ -l mem_free=1G
+#$ -l arch=linux-x64
+#$ -l netapp=1G
+#$ -l h_rt=00:30:00
+#$ -cwd
+#$ -j y
+#$ -t 1-500
+
+
+
 ## Python script to keep track of input options for rosetta backrub jobs
 ## All options for backrub executable are hardcoded here, versus in input  
 # 
@@ -30,8 +43,12 @@ cmd  = [ brub_exe,
 '-ntrials'			, '30000'	,			# Takes 300 seconds (5 minutes)
 #'-initial_pack'		, 'True'	,
 '-mc_kt'			, '0.5',
-'-out:overwrite'
+'-out:overwrite',	'-out:no_nstruct_label',
+'-out:prefix', 		outDir, 
+'-out:suffix', 		os.environ["SGE_TASK_ID"]
+
 ]
+
 
 sp.call( cmd )
 

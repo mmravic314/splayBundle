@@ -1,4 +1,0 @@
-SEQUENCE: 
-SCORE: total_score dslf_fa13    fa_atr    fa_dun   fa_elec fa_intra_rep       fa_rep       fa_sol hbond_bb_sc hbond_lr_bb    hbond_sc hbond_sr_bb       omega     p_aa_pp    packstat pro_close      rama       ref sc_filter sc_filter_int_area description 
-SCORE:    -302.297     0.000  -631.957   186.628   -67.569        0.803       51.906      417.235       0.000       0.000     -17.463    -128.514       2.284      -6.577       0.305     0.000   -25.496   -83.577     0.418           1691.815 designInputs/3BVX-2L/3BVX_0000/3BVX_00002R_0.pdb_gz
-SCORE:    -302.714     0.000  -624.673   176.726   -65.672        0.812       50.462      414.529       0.000       0.000     -17.107    -128.920       2.632      -4.850       0.336     0.000   -25.058   -81.594     0.428           1413.687 designInputs/3BVX-2L/3BVX_0000/3BVX_00001R_0.pdb_gz
