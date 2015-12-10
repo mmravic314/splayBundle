@@ -1,0 +1,89 @@
+### Marco Mravic informal command line history to create symmetric bundles splayed to solvent
+### UCSF DeGrado lab 
+## Input DF1 L13G de novo designed 4 helix bundle biological unit from crystal structure (no waters)
+## Centered the structure and eye-balled the two back-side "straight helices" to line up along Z-axis
+## The filename of reference structure for full structure superposition: 	"df1L13G-DIMERCenteredX.pdb"
+## The filename of reference structure for back-side refernce helices: 		"df1L13G_targetPair001CENz.pdb"
+# Requires jCE align java package
+### all commands below are executed from ~/splayBundle
+### all code is in ~/bin 
+### dependencies: PS helix fitting binary [compiled w/ fortran], CE structure alignment jav suite, sciPy, ProDy, cPickle
+
+###  1) from input directory of helical pairs from Zhang et al 2015, Structure
+###  find best alignment of a pair onto 1 back-de reference helix, that doesn't clash w/ other ref helix
+###  "mobile" helix of each pair aligns to target helix of input df1 PDB, and the unaligned helix of pair is "incident helix"
+###  incident helix will have some crossing angle to center of mass between 2 back-side refernce helices: splay angle
+##### OUTPUTS ###
+## Writes directory of aligned PDBs of most closely interacting interface'pairs_$input_dir_name/'
+## a list containing input file paths
+## another tmp directory of aligned full matches, before some are removed for size of interface, clashes, etc
+## alignment-based sequence alingment of mobile helices (not used downstream)
+### INPUT ####### 
+## 1) target PDB
+## 2) path to list .txt file with one path per PDB to align to target
+## 3) path to runCE.sh (CE must be in original directory)
+## DO NOT PUT FINAL FORWARD SLASH ON INPUT PATHS TO DIRECTORIES
+## unfortunately the matching pickle file storing a hash about interface residues is hardcoded based on last character of input dir
+### Bash sample input
+> python ~/bin/fitting_DFBundle.py ~/splayBundle/df1L13G_targetPair001CENz.pdb ~/splayBundle/tmCluster-001 ~/bin/protein-comparison-tool_20130326/runCE.sh 
+
+### 2) Define splay angle between incident helix and center of mass of two df1 back-side reference helices
+### fit incident helix's axis (including radius of curvature) with PS ( Smith, et al 2011, J. Mol. Graph. Model. )
+### Find intersection of axis with z plane if origin set at center of mass of df1 back-side reference helices (z axis aligned to these helices)
+### OUTPUTS ######
+## std out gets a matpltlib/sciPy plot histogram (save this figure)
+## list file written of all eligible pdbs and their splay angle. Can hand sort this space-separated file in excel
+### INPUT ########
+## Path to centered dimer
+## path to aligned PDBs directory 
+## path to cPickle hash of alignment info
+## path to PS binary (compiled in fortran)
+> python ~/bin/analyzeSplayGeo.py ~/splayBundle/df1L13G-DIMERCenteredX.pdb ~/splayBundle/pairs_tmCluster-001 ~/splayBundle/mtchInfo-C1.pkl ~/bin/PS
+
+### 3) select backbones to create psuedo-symmetric coiled-coil fragments of
+### BEFORE RUNNING COMMAND: manually hash out all unwanted pairs from list, and add (or write in new file) chain/resi ranges to extract
+### example line from input list file: 114.745 3C18-010_007-0200_0228_B_0124_0142_B_aligned.pdb A 6-17 B 33-44
+### Output #######
+## PDB files with symmetric operations to make a bundle fit to Crick coiled-coil equations
+## 
+### INPUT ########
+## Path to list file with user-specified fragment from each aligned pdbs with ~ 10 residues from each chain (each chain must be same size)
+## path to aligned pdbs
+## path to bin (to find coiled-coil fitting/generation code)
+## path to reference df1 structure (centered and aligned with Z-axis)
+## path to jCE structure alignment 
+
+> python ~/bin/extendDFtopology.py ~/splayBundle/c6-splayfit-queries.txt ~/splayBundle/pairs_Cluster-006 ~/bin/  ~/splayBundle/df1L13G-DIMERCenteredX.pdb  ~/bin/protein-comparison-tool_20130326/runCE.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
