@@ -1,0 +1,3 @@
+/Users/mmravic/splayBundle/tmBBsplay/1m0l_1E_bb/CD_1m0l_1E_00001.pds
+/Users/mmravic/splayBundle/tmBBsplay/1m0l_1E_bb/AB_1m0l_1E_00001.pds
+/Users/mmravic/splayBundle/tmBBsplay/1m0l_1E_bb/BC_1m0l_1E_00001.pds

@@ -52,11 +52,31 @@
 ## path to bin (to find coiled-coil fitting/generation code)
 ## path to reference df1 structure (centered and aligned with Z-axis)
 ## path to jCE structure alignment 
-
+n
 > python ~/bin/extendDFtopology.py ~/splayBundle/c6-splayfit-queries.txt ~/splayBundle/pairs_Cluster-006 ~/bin/  ~/splayBundle/df1L13G-DIMERCenteredX.pdb  ~/bin/protein-comparison-tool_20130326/runCE.sh
 
 
 
+### With these 4 helix bundle-like fragments, submit to CCCP fitter http://www.grigoryanlab.org/cccp/
+## determine the crick parameters
+## save each parameter set from fit in txt based on pdb, cluster (tm 1 or 6) and arbitrary index A-E. e.g 1m0l_6A
+## Then do a grid search (Vary: alpha helical phase x10, super helical radiusx10, Z axis offset x10 )
+## to generate all-alanine (CHARMM minimized) coiled coils  (All manually, but could automate with CCCP octave/matlab)
+## Download and save in directory by index + '_bb' e.g. ~/splayBundle/tmBBsplay/1m0l_6A_bb/
+> mkdir tmBBsplay/
+## delete unnecessary CA and un-minimized backbone rebuilds 
+> rm tmBBsplay/*bb/*.CA.pdb
+> rm tmBBsplay/*bb/*.allbb.pdb
+## Rewrite files (in Rosetta compatible format, residue number 1-100 regardless of chain)
+## some ALA CB's were messed up so just turn all to CB
+> for i in *bb/; do python ~/bin/cccpGenCleanUP_noH.py ~/splayBundle/tmBBsplay/$i; done
+
+
+### Designability of bundles
+## Cut 10 residue windows of each helix/helix interaction interface, there are 3 (common atom selection string)
+## Search in MASTER in the cluster (3 per backbone, 1000 backbones per model, 9 models = 30,000 jobs ~ 1 minute each)
+## Outout a log 4 column log with the backbone path and the number of matches under 2 A C-alpha RMSD in a TM database
+## Definitely do on computing cluster as separate jobs. 
 
 
 
