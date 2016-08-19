@@ -1,0 +1,477 @@
+
+> for i in *loop.pdb; do ~/bin/createPDS --type query --pdb $i; done 
+
+> ~/bin/master --query BA_loop.pds --targetList ~/termanal/support.default/v2_162901_bc_30-scPDB/list.txt --rmsdCut 0.8 --topN 300 --seqOut BA_loop.seq --matchOut BA_loop.m --structOut BA_loop/ --bbRMSD
+
+> ~/bin/master --query CB_loop.pds --targetList ~/termanal/support.default/v2_162901_bc_30-scPDB/list.txt --rmsdCut 0.8 --topN 300 --seqOut CB_loop.seq --matchOut CB_loop.m --structOut CB_loop/ --bbRMSD
+
+> ~/bin/master --query DC_loop.pds --targetList ~/termanal/support.default/v2_162901_bc_30-scPDB/list.txt --rmsdCut 0.8 --topN 300 --seqOut DC_loop.seq --matchOut DC_loop.m --structOut DC_loop/ --bbRMSD
+
+> mkdir BA_loop_Matches
+> mkdir CB_loop_Matches
+> mkdir DC_loop_Matches
+
+
+> python ~/bin/loopFinder.py BA_loop.pdb BA_loop.m ~/termanal/support.default/v2_162901_bc_30-scPDB_oPDB/ BA_loop_Matches/
+
+> python ~/bin/loopFinder.py CB_loop.pdb CB_loop.m ~/termanal/support.default/v2_162901_bc_30-scPDB_oPDB/ CB_loop_Matches/
+
+> python ~/bin/loopFinder.py DC_loop.pdb DC_loop.m ~/termanal/support.default/v2_162901_bc_30-scPDB_oPDB/ DC_loop_Matches/
+
+
+## BA, Obvious loop length = 12, take match1
+
+## CB, Less obvious length = 9, take match32
+
+## DC, 4 or 8 obvious, do length = 4, take match 13
+
+
+###################### BA #############################
+loop Length: 12 RMSD: 0.1487 match1 LGKYYLSLGDLDSATALFK
+
+loop Length: 12 RMSD: 0.15 match2 LGNAYYKNGDYDEAIEYYN
+
+loop Length: 12 RMSD: 0.1565 match3 EGNEFFKKNEINEAIVKYK
+
+loop Length: 16 RMSD: 0.1686 match5 LGVLYYNGNGVEKNLKKAASFYA
+
+loop Length: 13 RMSD: 0.1692 match6 YGRFNEFHRKSENTAIHHYL
+
+loop Length: 12 RMSD: 0.1788 match9 LGNAYYYNKEYVKADSSFV
+
+loop Length: 12 RMSD: 0.1795 match10 NGNRLFVGRKYPEAAACYG
+
+loop Length: 12 RMSD: 0.1799 match11 LGKVAYTEADYYHTELWME
+
+loop Length: 12 RMSD: 0.1863 match14 LAEYYEKIGDDKKALKTYN
+
+loop Length: 12 RMSD: 0.1897 match16 IAVYFDSEDLPNLAKHFYS
+
+loop Length: 12 RMSD: 0.1902 match17 RAMEFYNNGKYDRAIEYFK
+
+loop Length: 12 RMSD: 0.1936 match20 FGGNAKKDGFVNISDIFAE
+
+loop Length: 12 RMSD: 0.1936 match21 AARLYERRELYEAAAVTYE
+
+loop Length: 12 RMSD: 0.1937 match22 KAACLVAMREWSKANRAYE
+
+loop Length: 12 RMSD: 0.198 match24 LASIHKDSGNIPEAIASYR
+
+loop Length: 12 RMSD: 0.1983 match25 LALLAVYTRRKLDAVYYYM
+
+loop Length: 12 RMSD: 0.2026 match28 IGLAYEGKGLRDEAVKYFK
+
+loop Length: 12 RMSD: 0.2047 match31 LGIYLTNAGNFDAAYEAFD
+
+loop Length: 12 RMSD: 0.2051 match32 CGVCADNIKKYKEAADYFD
+
+loop Length: 12 RMSD: 0.206 match33 MGNTLKEMNDVNGALNCYT
+
+loop Length: 12 RMSD: 0.206 match34 LARAYYNNKEYLLAASEYE
+
+loop Length: 12 RMSD: 0.2073 match35 LGATLANGNNSEEAVAAYR
+
+loop Length: 12 RMSD: 0.2083 match36 EGLRRLNEGDLPNAVLLFE
+
+loop Length: 11 RMSD: 0.209 match37 RGNHFFTAKNFNAIKYYN
+
+loop Length: 12 RMSD: 0.2108 match38 EGERLCNAGDCRAGVAFFN
+
+loop Length: 12 RMSD: 0.2112 match41 NANDYFKAKDYENAIKFYS
+
+loop Length: 16 RMSD: 0.2135 match42 LGEIYYYGLGVERDYVNAWAWFD
+
+loop Length: 12 RMSD: 0.2136 match44 IGNAYHKLGDLKKTIEYYN
+
+loop Length: 12 RMSD: 0.2139 match46 EGNAAMARKEYSKAIDLYT
+
+loop Length: 12 RMSD: 0.2144 match47 YGKILMKKGNDSLAINNYN
+
+loop Length: 12 RMSD: 0.2154 match50 ISTLYYNLGDHELSLSEVR
+
+loop Length: 12 RMSD: 0.2155 match51 HSVLAADLHYEDKAVELYS
+
+loop Length: 12 RMSD: 0.2181 match55 LGTINRRNGKLNEALISYT
+
+loop Length: 12 RMSD: 0.2187 match58 EAEEFLSKGDLVNACEKYY
+
+loop Length: 12 RMSD: 0.2202 match62 HAKHDLEHGFYNWACFSSN
+
+loop Length: 12 RMSD: 0.22 match64 KARISKHKGELNTAMEIMD
+
+loop Length: 9 RMSD: 0.2213 match65 NAHSEKDPLKRFLYVM
+
+loop Length: 12 RMSD: 0.2217 match69 HYRLLNDWGYTRLAKKERE
+
+loop Length: 12 RMSD: 0.223 match72 LGNAYFYLHDYAKALEYHH
+
+loop Length: 12 RMSD: 0.2244 match77 MSSWCYTHSLDGAGLFLFD
+
+loop Length: 12 RMSD: 0.2256 match78 RSLAYLRTECYGYALGDAT
+
+loop Length: 12 RMSD: 0.2291 match84 LAVVFNTEMEPKLADEEYR
+
+loop Length: 10 RMSD: 0.2294 match87 KGKSFGCFPEEVRDALN
+
+loop Length: 14 RMSD: 0.2297 match88 KGWALLKFGGKYYNKAKAAFE
+
+loop Length: 12 RMSD: 0.229 match89 KAIDLDTATNYEEAYTAYY
+
+loop Length: 16 RMSD: 0.2299 match90 LGSLYDAGRGTPKDLKKALASYD
+
+loop Length: 12 RMSD: 0.23 match91 LGLLYELEENTDKAVECYR
+
+loop Length: 16 RMSD: 0.23 match92 EAEAYARGLGVANNLSKANELYK
+
+loop Length: 12 RMSD: 0.231 match95 KGNKALSVGNIDDALNCYS
+
+loop Length: 12 RMSD: 0.2311 match96 LGDIARYRNNTSNAESYYR
+
+loop Length: 12 RMSD: 0.2315 match98 AAIDALNDGELNKAIDLFT
+
+loop Length: 16 RMSD: 0.2317 match99 LGYRYFNGNETTKDLTNAMDWFR
+
+loop Length: 12 RMSD: 0.234 match105 LAILASSKGDHLTTIFYYC
+
+loop Length: 12 RMSD: 0.2342 match106 AGVTYAYKENREKALEMLD
+
+loop Length: 12 RMSD: 0.2349 match110 RGMYEFKNKNFILAIDHYK
+
+loop Length: 12 RMSD: 0.236 match116 EARYAKSGGYYELACFLSN
+
+loop Length: 12 RMSD: 0.2369 match117 LGVALDNLGRFDEAIDSFK
+
+loop Length: 12 RMSD: 0.2373 match119 EGERLCKSGDCRAGVSFFE
+
+loop Length: 12 RMSD: 0.2376 match120 LAMEYMRGNDYRNATASIE
+
+loop Length: 12 RMSD: 0.238 match122 KGNKYFKNGKYDEAIDCYT
+
+loop Length: 12 RMSD: 0.238 match123 EGNKFYKARNFDEAIEHYN
+
+loop Length: 12 RMSD: 0.2389 match127 MGDIEREAEMFSRAIHHYL
+
+loop Length: 12 RMSD: 0.2396 match129 MSAWLLTNSLDSTAAFFRA
+
+loop Length: 12 RMSD: 0.2413 match134 LGNTHYLLGNFRDAVIAHE
+
+loop Length: 5 RMSD: 0.2416 match135 EAWAEKSFNKLW
+
+loop Length: 12 RMSD: 0.242 match137 FAHSFAIEGEHDNAISAYT
+
+loop Length: 12 RMSD: 0.2423 match139 IASTLAIMEYEEDAMDFFN
+
+loop Length: 16 RMSD: 0.2436 match145 LGLIYASGVHGPEDDVKASEYFK
+
+loop Length: 12 RMSD: 0.2442 match147 NALEMKRNGKREKANKLFM
+
+loop Length: 12 RMSD: 0.2444 match149 LGKVYEMKGMNREAADAYL
+
+loop Length: 16 RMSD: 0.2449 match151 AGNMYHHGEGATKNFKEALARYS
+
+loop Length: 12 RMSD: 0.2457 match156 LGATLANGNRPNEALDAYN
+
+loop Length: 12 RMSD: 0.2464 match160 RSAAYAKKGDYNKAYEDGC
+
+loop Length: 12 RMSD: 0.2467 match161 LGNAYIFLGEFETASEYYK
+
+loop Length: 12 RMSD: 0.2467 match162 IGCMYTILKNMTEAEKAFT
+
+loop Length: 12 RMSD: 0.2467 match163 KGLNTDELGNKEEAKNYYK
+
+loop Length: 12 RMSD: 0.2473 match165 LGNCNLEMESYDEAIANLN
+
+loop Length: 12 RMSD: 0.2473 match166 MGKNAEENNKFGERVAYFN
+
+loop Length: 13 RMSD: 0.248 match169 RAEGALKGWNMGGDAKTFYE
+
+loop Length: 12 RMSD: 0.2481 match171 LGLVYDSMGEHDKAIEAYE
+
+loop Length: 12 RMSD: 0.2481 match172 LAGESYKNKDMKNAFFYLG
+
+loop Length: 12 RMSD: 0.2481 match173 EGKDLFETANYGEALVFFE
+
+loop Length: 12 RMSD: 0.2485 match175 FAHHDLRRGRFNPFRFGLL
+
+loop Length: 12 RMSD: 0.2485 match176 HGLHLEEENRVGEAIAFLD
+
+loop Length: 12 RMSD: 0.2487 match177 LGASLHMSENYSNALHAYG
+
+loop Length: 11 RMSD: 0.249 match179 SGVATFKTFPKFAFDYFV
+
+loop Length: 12 RMSD: 0.2504 match181 LGNSHIFLGNFEDAAEHYK
+
+loop Length: 12 RMSD: 0.2506 match182 LARYEWNRGNYKNATFYLG
+
+loop Length: 12 RMSD: 0.2507 match185 LGVVAFNKSDMNTAINHFN
+
+loop Length: 16 RMSD: 0.252 match190 LGYKNYAGKGVVKNEKNAVKTFE
+
+loop Length: 12 RMSD: 0.2524 match192 LSKKLFEESAYIDALEFSL
+
+loop Length: 12 RMSD: 0.2539 match196 EGLSMLKLANLAEAALAFE
+
+loop Length: 15 RMSD: 0.2541 match197 ACSAEGYPTAAGNYNIDLLLAN
+
+loop Length: 12 RMSD: 0.255 match200 LGLVSLNMKKPANAKEYFE
+
+loop Length: 12 RMSD: 0.2554 match202 EAVAHGKEGHTDNLLEHAK
+
+loop Length: 12 RMSD: 0.2562 match206 LGDLCTLSGYREEGIGHYV
+
+loop Length: 16 RMSD: 0.2578 match214 LGVMYHEGNGVKVDKAESVKWFR
+
+loop Length: 11 RMSD: 0.258 match217 AGKLMEPLDLSKAVHLYN
+
+loop Length: 13 RMSD: 0.2591 match225 RGECLRKLEYEEAEIEDAYK
+
+loop Length: 12 RMSD: 0.2591 match227 RAVCYYELAKYDLANKDIE
+
+loop Length: 14 RMSD: 0.2592 match228 MSCYFDRDDVALKNFAKYFLH
+
+loop Length: 12 RMSD: 0.2593 match229 LGDLANNEKNLLEANNHWL
+
+loop Length: 12 RMSD: 0.261 match235 LGLSNYGEGKNTEANNTLN
+
+loop Length: 12 RMSD: 0.2611 match236 FAKAARENGYENIARLFEA
+
+loop Length: 12 RMSD: 0.2612 match237 EGNKFNNAGNIEKAEENYK
+
+loop Length: 12 RMSD: 0.2614 match240 RGMLYYNTEKYDLAIKDLK
+
+loop Length: 12 RMSD: 0.2637 match251 IGNTFFKSNNWEMAIKKYT
+
+loop Length: 12 RMSD: 0.2656 match262 RGLVYALLGERDKAEASLK
+
+loop Length: 12 RMSD: 0.2664 match265 DAKKEFEMGLYERCCSTAY
+
+loop Length: 12 RMSD: 0.266 match267 AAECHLNLGDLDGAESGFY
+
+loop Length: 9 RMSD: 0.2687 match276 IADLSERDWVRYLWYI
+
+loop Length: 8 RMSD: 0.2707 match286 TAALSKGYVRVIFFL
+
+loop Length: 12 RMSD: 0.2707 match287 TAKLANHWGDKNLAHICGS
+
+
+#############################################################
+
+
+#################### CB  ####################################
+
+loop Length: 8 RMSD: 0.2508 match4 GDLKRKYSKVFSKELD
+
+loop Length: 14 RMSD: 0.2549 match5 EKNLLDIIKNNELSKLSTNLVM
+
+loop Length: 9 RMSD: 0.268 match10 KKALEAIKGENNLILEK
+
+loop Length: 10 RMSD: 0.2908 match30 SELFNDFAVPLSYHEIAL
+
+loop Length: 9 RMSD: 0.292 match32 VLRASDVIEHHKFEALA
+
+loop Length: 6 RMSD: 0.2931 match34 INNIKNGGDKNKME
+
+loop Length: 10 RMSD: 0.2996 match41 FANMNRNLDGEKNLTELD
+
+loop Length: 9 RMSD: 0.3118 match60 EENLSLVTALGDRAANG
+
+loop Length: 6 RMSD: 0.3145 match63 IDEALKIKNKEDFG
+
+loop Length: 7 RMSD: 0.319 match72 SELILKSFKEAEVLK
+
+loop Length: 9 RMSD: 0.3207 match76 TFYAKYVKEFGEEKEFD
+
+loop Length: 8 RMSD: 0.3244 match82 IGLLLETSGTNKIEDK
+
+loop Length: 16 RMSD: 0.3258 match84 ASEILNVKNFIDRKAWPSLNNDLR
+
+loop Length: 14 RMSD: 0.3337 match97 LIGTGLITSRSDARPEDAADFV
+
+loop Length: 7 RMSD: 0.3366 match102 YKEARKLDLTNEMRR
+
+loop Length: 13 RMSD: 0.3421 match117 VTVNKACMVDEESRICKALFL
+
+loop Length: 15 RMSD: 0.346 match131 NRYLGYTLNPDLIRKNDATSTIN
+
+loop Length: 15 RMSD: 0.3588 match175 DNAISAYTTAARLFTHLPYLFLG
+
+loop Length: 7 RMSD: 0.359 match179 AKVKELIPDDAHLHR
+
+loop Length: 13 RMSD: 0.3598 match183 IHHFLIAPDFVPENLMADAIN
+
+loop Length: 14 RMSD: 0.3599 match184 KNEKTFAESTIKNELTLGEFVA
+
+loop Length: 8 RMSD: 0.3619 match190 RGLLVTGAVFDERARG
+
+loop Length: 15 RMSD: 0.3681 match213 RRAMEISHTMPPEEAFDHAGFDA
+
+loop Length: 15 RMSD: 0.3697 match225 TRIRLATEMMSENDGYLAESINK
+
+loop Length: 9 RMSD: 0.372 match241 DHILNTYNSKSSLIKFC
+
+loop Length: 15 RMSD: 0.3754 match263 DELLNDLDKLDHWPDTVKTMNRN
+
+loop Length: 6 RMSD: 0.3762 match268 SRLYSMTEDEGVRD
+
+loop Length: 13 RMSD: 0.3764 match270 EMWYILIRGMVPVTRRARYVT
+
+loop Length: 12 RMSD: 0.3766 match273 VLNFKKICEEAPENMVNLLG
+
+loop Length: 6 RMSD: 0.3771 match277 LRLKAGKVTEAKKE
+
+loop Length: 6 RMSD: 0.378 match283 VRLLRKARDMDLTE
+
+
+#############################################################
+
+
+########################### DC ##############################
+
+loop Length: 4 RMSD: 0.6007 match13 GLHCGSALFRHE
+
+loop Length: 7 RMSD: 0.6203 match19 NASMRNLLGGKGCNL
+
+loop Length: 8 RMSD: 0.6234 match22 KIDNGADLDSVTVANE
+
+loop Length: 8 RMSD: 0.6244 match23 GISNNAKNGNLPEFGD
+
+loop Length: 14 RMSD: 0.6268 match24 LSNFLDKSGLNGYDMSTFIRRY
+
+loop Length: 5 RMSD: 0.6324 match27 NVFLANNLEERSR
+
+loop Length: 11 RMSD: 0.6371 match30 GYEILKGGDSRLLNIAADI
+
+loop Length: 6 RMSD: 0.6374 match31 NLDNAELPFLRRIA
+
+loop Length: 9 RMSD: 0.6585 match46 AATYWGGEDHPTSNSLN
+
+loop Length: 6 RMSD: 0.6643 match47 ALRDESRPAASRLA
+
+loop Length: 16 RMSD: 0.673 match57 AVKAYTEMIKRAPEDARGYSNRAA
+
+loop Length: 6 RMSD: 0.6746 match61 PGSSDLLTPKLRKL
+
+loop Length: 8 RMSD: 0.6774 match66 NIDWGGHANNASYLIS
+
+loop Length: 4 RMSD: 0.6784 match68 RWFEAEGEERYD
+
+loop Length: 8 RMSD: 0.6851 match71 GLDITDEEGDAGTNDL
+
+loop Length: 8 RMSD: 0.6872 match75 LYWAGKEFNKPEWFDA
+
+loop Length: 11 RMSD: 0.688 match76 GYEKFVDNPTPKTFLESIV
+
+loop Length: 10 RMSD: 0.6935 match88 EIKNSLKIDNLDVNRCIE
+
+loop Length: 6 RMSD: 0.6937 match89 GLALYRYDSEKNNV
+
+loop Length: 8 RMSD: 0.6945 match92 SIDKNDHAANPCGNIG
+
+loop Length: 8 RMSD: 0.695 match93 DMIVANLNEDTEAYES
+
+loop Length: 14 RMSD: 0.6952 match94 LPDLELSYAPPYSSAKDPVNMV
+
+loop Length: 8 RMSD: 0.6957 match95 VTGAAYGERNVEKLET
+
+loop Length: 4 RMSD: 0.7036 match106 FFKHSSPKIRSH
+
+loop Length: 8 RMSD: 0.7041 match108 LVFNYLFISNISFAHE
+
+loop Length: 8 RMSD: 0.7073 match116 NLPVLATDEKYNEAVY
+
+loop Length: 8 RMSD: 0.7103 match122 RFEMSLDKEDVENYLA
+
+loop Length: 8 RMSD: 0.7131 match125 ALVAAEKANDGETFSN
+
+loop Length: 8 RMSD: 0.718 match131 NLWMGLNNDRFDNFWA
+
+loop Length: 5 RMSD: 0.7233 match139 AVNASASPLNVVE
+
+loop Length: 8 RMSD: 0.7233 match140 GVLVSINTCDIESFAR
+
+loop Length: 8 RMSD: 0.7236 match143 NIDWAGHSNDAGTMLH
+
+loop Length: 8 RMSD: 0.727 match156 EVTRAVSEGNLLLLHE
+
+loop Length: 4 RMSD: 0.7273 match157 ALKDEDGWVRNS
+
+loop Length: 8 RMSD: 0.7294 match161 ALELANSLKDPTEEKK
+
+loop Length: 5 RMSD: 0.729 match162 VVEHAETADDRVF
+
+loop Length: 4 RMSD: 0.7298 match164 ASKLLKKPDNGR
+
+loop Length: 4 RMSD: 0.7317 match169 MLNDKNEEVRIE
+
+loop Length: 4 RMSD: 0.7333 match172 LNSHENEKINKE
+
+loop Length: 5 RMSD: 0.7358 match178 AVDMYKYGKIAFV
+
+loop Length: 4 RMSD: 0.7396 match190 VLAEGNDSNNAE
+
+loop Length: 8 RMSD: 0.7405 match191 EAVEAANKGDVEAFAK
+
+loop Length: 8 RMSD: 0.7407 match192 RVTEALEAYDPTTSAR
+
+loop Length: 8 RMSD: 0.741 match194 NVLVNLHRADYVAANK
+
+loop Length: 4 RMSD: 0.7424 match198 AELYPCGECSYH
+
+loop Length: 4 RMSD: 0.7434 match201 ALKDEDEYVRNR
+
+loop Length: 8 RMSD: 0.7434 match202 WIAYGIMRSDFAVLIA
+
+loop Length: 8 RMSD: 0.7437 match203 ETTNALEEFRTRTAVN
+
+loop Length: 8 RMSD: 0.7439 match205 GFDVSDEEGDSVTNDI
+
+loop Length: 8 RMSD: 0.744 match206 YMLSALKKNDLDMALR
+
+loop Length: 14 RMSD: 0.7445 match208 EIKNFNRFAHDPMAGGHRMWNM
+
+loop Length: 2 RMSD: 0.744 match209 CINAGGDTDS
+
+loop Length: 5 RMSD: 0.7449 match210 ATSMDLPMPMRFR
+
+loop Length: 8 RMSD: 0.7451 match212 TLTYRSNTNTLAIIES
+
+loop Length: 4 RMSD: 0.7455 match215 MIDNENDGIRTN
+
+loop Length: 4 RMSD: 0.7458 match216 VFNLGLNETMND
+
+loop Length: 8 RMSD: 0.746 match221 EVTRNLDAFRFDLAAN
+
+loop Length: 4 RMSD: 0.7468 match222 LFEYPNMNVRLN
+
+loop Length: 4 RMSD: 0.7489 match230 HFGHPDRDVRRY
+
+loop Length: 4 RMSD: 0.7505 match233 LLDSEDYNTCEG
+
+loop Length: 6 RMSD: 0.751 match236 LYDNYSENEIGRYT
+
+loop Length: 4 RMSD: 0.7519 match242 LLSSPNENILNE
+
+loop Length: 16 RMSD: 0.7522 match245 AVDSCLEALEIDPSNTKALYRRAN
+
+loop Length: 4 RMSD: 0.753 match250 LLHDGDEIVRAS
+
+loop Length: 13 RMSD: 0.7544 match258 LMTVSLLLKDNYNGMSFVCIG
+
+loop Length: 4 RMSD: 0.7548 match261 LLNDNHLGVVTA
+
+loop Length: 6 RMSD: 0.7555 match264 CMKYNARDTVFYRA
+
+loop Length: 4 RMSD: 0.7568 match267 LLTNEHERVVKA
+
+loop Length: 13 RMSD: 0.7573 match269 NNTLLDGSIDPSRKDLAEAER
+
+loop Length: 8 RMSD: 0.759 match280 RIVAAWADHDADRFAD
+
+loop Length: 12 RMSD: 0.759 match284 DIVDGMANLMEVLSVNSVWV
+
+loop Length: 4 RMSD: 0.7624 match295 GLMSNETSVRTL
+
+loop Length: 9 RMSD: 0.7625 match296 SRLFSASEFEDPLVGED
+
+
+#############################################################
